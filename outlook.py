@@ -12,7 +12,7 @@ urllib3.disable_warnings()
 domainURL = ""
 URL = "https://" + domainURL + "/owa/"
 pwdURL = "https://" + domainURL + "/ecp/PersonalSettings/Password.aspx"
-changepwdURL = "https:/" + domainURL + "/ecp/DDI/DDIService.svc/SetObject?schema=PasswordService&msExchEcpCanary="
+changepwdURL = "https://" + domainURL + "/ecp/DDI/DDIService.svc/SetObject?schema=PasswordService&msExchEcpCanary="
 
 header = {'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36'}
 
