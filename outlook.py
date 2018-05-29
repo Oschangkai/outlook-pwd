@@ -9,7 +9,7 @@ urllib3.disable_warnings()
 # --------------------------------------------------------------------------------
 
 # Config
-domain URL = ""
+domainURL = ""
 URL = "https://" + domainURL + "/owa/"
 pwdURL = "https://" + domainURL + "/ecp/PersonalSettings/Password.aspx"
 changepwdURL = "https:/" + domainURL + "/ecp/DDI/DDIService.svc/SetObject?schema=PasswordService&msExchEcpCanary="
