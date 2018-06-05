@@ -25,13 +25,13 @@ def setVals(args):
 
 	global header
 
-	domainURL = args.domain_url
+	domainURL = "mail." + args.domain_url
 	URL = "https://" + domainURL + "/owa/"
 	pwdURL = "https://" + domainURL + "/ecp/PersonalSettings/Password.aspx"
 	changepwdURL = "https://" + domainURL + "/ecp/DDI/DDIService.svc/SetObject?schema=PasswordService&msExchEcpCanary="
 
 	email = args.email
-	user = email[email.index("@")+1:]
+	user = email[0:email.index("@")]
 	password = args.old_password
 	newPassword = args.new_password
 
@@ -55,7 +55,6 @@ def login():
 	}
 
 	# Establish Session
-	global s
 	s = requests.Session()
 
 	# GET: Login page
@@ -64,7 +63,7 @@ def login():
 	# POST: Login
 	s.post(URL + "auth.owa", data= login_data, verify= False)
 
-def changePwd():
+# --------------------------------------------------------------------------------
 	# GET: Change password page
 	r = s.get(pwdURL, headers= header, verify= False)
 
@@ -79,6 +78,7 @@ def changePwd():
 	t = temp[i+11:].replace("&quot;", "")
 	RawIdentity = t[3:37]
 
+	global changepwdURL
 	changepwdURL += ecpCanary
 
 	changePwd_data = {
@@ -115,5 +115,5 @@ if __name__ == "__main__":
 	args = p.parse_args()
 	setVals(args)
 	login()
-	changePwd()
-# "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python36_64\Scripts\pyinstaller.exe" -F myscript.spec --clean
+	# test()
+# "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python36_64\Scripts\pipenv.exe" run pyinstaller -F outlook.py --clean
