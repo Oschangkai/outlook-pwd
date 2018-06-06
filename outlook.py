@@ -25,7 +25,7 @@ def setVals(args):
 
 	global header
 
-	domainURL = "mail." + args.domain_url
+	domainURL = args.domain_url
 	URL = "https://" + domainURL + "/owa/"
 	pwdURL = "https://" + domainURL + "/ecp/PersonalSettings/Password.aspx"
 	changepwdURL = "https://" + domainURL + "/ecp/DDI/DDIService.svc/SetObject?schema=PasswordService&msExchEcpCanary="
@@ -107,9 +107,9 @@ if __name__ == "__main__":
 
 	required.add_argument('-m','--email', help="Outlook 登入的電子信箱", required= True)
 	required.add_argument('-opwd','--old-password', help="舊密碼", required= True)
-	required.add_argument('-pwd','--new-password', help="新密碼", required= True)
+	required.add_argument('-npwd','--new-password', help="新密碼", required= True)
 	
-	optional.add_argument('-d','--domain', dest='domain_url', default="famigrp.com.tw", help='設定 Outlook domain URL (預設: famigrp.com.tw)')
+	optional.add_argument('-d','--domain', dest='domain_url', default="mail.famigrp.com.tw", help='設定 Outlook domain URL (預設: mail.famigrp.com.tw)')
 	# p.print_help()
 
 	args = p.parse_args()
